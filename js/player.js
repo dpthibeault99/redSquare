@@ -1,25 +1,32 @@
-function Player() {
+function Player()
+{
+    // set up player starting point
+    this.x = canvas.width/2;
+    this.y = canvas.height/2;
 
-    //player postion
-    this.x = canvas.width / 2;
-    this.y = canvas.height / 2;
-
-    // player size
+    // set up player dimensions
     this.width = 100;
     this.height = 100;
 
-    // player color
-    this.color = "#ff0000"
+    /// set up player color
+    this.color = "rgba(255, 0, 0, 1)" 
 
-    // function in a function ???
-    this.draw = function(){
+    // set up player velocity
+    this.vx = 0;
+    this.vy = 0;
 
+    this.draw = function()
+    {
         context.save();
-            context.fillStyle = this.color
-            context.translate(this.x,this.y);
-            context.fillRect(   (-this.width / 2) , (-this.height / 2 ), this.width, this.height   );
+            context.fillStyle = this.color;
+            context.translate(this.x, this.y);
+            context.fillRect((-this.width/2), (-this.height/2), this.width, this.height);
         context.restore();
-
     }
 
+    this.move = function()
+    {
+        this.x += this.vx;
+        this.y += this.vy;
+    }
 }
