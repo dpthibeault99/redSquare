@@ -2,13 +2,13 @@ let canvas = document.getElementById("myCanvas");
 let context = canvas.getContext("2d"); 
 // This gives you the drawing context
 
-function drawBall(x, y, radius) {
-    ctx.beginPath();
-    ctx.arc(x, y, radius, 0, Math.PI * 2); // Create a full 360-degree arc
-    ctx.fillStyle = "blue";
-    ctx.fill();
-    ctx.closePath();
-}
+function drawBall() {
+    context.beginPath();
+    context.arc(x,y,radius,0,360*Math.PI/180,true)
+    context.fillStyle = '#94008dff';
+    context.fill();
+    context.closePath();
+    }
 
     drawBall();
 
