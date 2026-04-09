@@ -1,26 +1,68 @@
-function Player()
+function gameObject(x,y,w,h, color)
 {
     // set up player starting point
-    this.x = canvas.width/2;
-    this.y = canvas.height/2;
+
+    // set up x
+    if(x==undefined){
+        this.x = canvas.width/2;
+    } else {
+        this.x = x;
+    }
+
+    // set up y
+    if(y==undefined){
+
+        this.y = canvas.height/2;
+    }else {
+        this.y=y;
+    }
 
     // set up player dimensions
-    this.width = 100;
-    this.height = 100;
 
-    /// set up player color
-    this.color = "rgba(255, 0, 0, 1)" 
+    // set up width
+    if(w==undefined){
+        this.width = 100;
+    } else {
+        this.w = w;
+    }
+    // set up hieght
+    if(h==undefined){
+        this.height = 100;
+    } else {
+        this.h = h;
+
+        // set up color
+    } if (color==undefined){
+        this.color = "rgb(80, 136, 255)" 
+    } else {
+        this.color =color;
+    }
+    
+    
 
     // set up player velocity
     this.vx = 0;
     this.vy = 0;
 
-    this.draw = function()
+    this.drawRect = function()
     {
         context.save();
             context.fillStyle = this.color;
             context.translate(this.x, this.y);
             context.fillRect((-this.width/2), (-this.height/2), this.width, this.height);
+        context.restore();
+    }
+
+    this.drawCircle = function()
+    {
+        context.save();
+            context.fillStyle = this.color;
+            context.beginPath();
+            context.translate(this.x,this.y);
+            conrext.arc(0, 0, this.width/2, 0, 360 * Math.PI/180, true);
+            context.closePath();
+            context.fill();
+
         context.restore();
     }
 
