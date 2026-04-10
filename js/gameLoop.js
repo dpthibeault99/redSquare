@@ -24,6 +24,7 @@ function animate()
     context.clearRect(0, 0, canvas.width, canvas.height);
 
     player.move();
+    //npcONE.move();
     if (player.x > canvas.width + player.width/2) // if player moves off screen 
     {
          // uncomment one or the other to change movment
@@ -33,6 +34,10 @@ function animate()
     if (npcONE.collistionCheck(player))
     {
      npcONE.color = "#4d6200";
+    }
+    else
+     {
+     npcONE.color = "#000000";
     }
 
     player.drawCircle();
