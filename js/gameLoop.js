@@ -22,12 +22,17 @@ timer = setInterval(animate, interval);
 function animate()
 {
     context.clearRect(0, 0, canvas.width, canvas.height);
+
     player.move();
     if (player.x > canvas.width + player.width/2) // if player moves off screen 
     {
          // uncomment one or the other to change movment
          // player.x = -player.width/2 //teleports player totally off the screen to the left // Turn this off before turning on bottom one
        player.vx *= -1 // reverse velocity to simulate bounce off right border 
+    }
+    if (npcONE.collistionCheck(player))
+    {
+     npcONE.color = "#4d6200";
     }
 
     player.drawCircle();

@@ -3,9 +3,12 @@ function gameObject(x,y,w,h, color)
     // set up player starting point
 
     // set up x
-    if(x==undefined){
+    if(x==undefined)
+    {
         this.x = canvas.width/2;
-    } else {
+    } 
+    else 
+    {
         this.x = x;
     }
 
@@ -13,7 +16,9 @@ function gameObject(x,y,w,h, color)
     if(y==undefined){
 
         this.y = canvas.height/2;
-    }else {
+    }
+    else
+    {
         this.y=y;
     }
 
@@ -22,12 +27,15 @@ function gameObject(x,y,w,h, color)
     // set up width
    if(w == undefined){
     this.width = 100;
-    } else 
+    } 
+    else 
     {
     this.width = w;
     }
+
     // set up hieght
-    if(h == undefined){
+    if(h == undefined)
+    {
     this.height = 100; // had to change this.w to this.width
     } 
     else 
@@ -37,11 +45,30 @@ function gameObject(x,y,w,h, color)
         // set up color
     if (color==undefined){
         this.color = "rgb(80, 136, 255)" 
-    } else {
+    }
+    else 
+    {
         this.color =color;
     }
-    
-    
+
+    //bounding box
+
+    this.left = function()
+    {
+        return this.x - this.width/2;
+    }
+    this.right = function()
+    {
+        return this.x + this.width/2;
+    }
+    this.top = function()
+    {
+        return this.y - this.height/2;
+    }
+    this.bottom = function()
+    {
+        return this.y + this.height/2;
+    }
 
     // set up player velocity
     this.vx = 0;
@@ -73,5 +100,22 @@ function gameObject(x,y,w,h, color)
     {
         this.x += this.vx;
         this.y += this.vy;
+    }
+
+
+    // collistion detection
+    this.collistionCheck = function (obj)
+        {
+        if
+        (
+            this.left() < obj.right() && 
+            this.right() > obj.left() &&
+            this.top() < obj.bottom() &&
+            this.bottom() > obj.top() 
+        )
+        {
+            return true
+        }
+        return false
     }
 }
