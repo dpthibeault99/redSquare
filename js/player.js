@@ -70,6 +70,8 @@ function gameObject(x,y,w,h, color)
         return this.y + this.height/2;
     }
 
+    this.prevX = x;
+
     // set up player velocity
     this.vx = 0;
     this.vy = 0;
