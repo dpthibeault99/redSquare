@@ -31,7 +31,7 @@ function animate()
     }
 
     player.drawCircle();
-    // player.drawRect();
+    player.drawRect();
     npcONE.drawCircle();
     npcTWO.drawCircle();
     npcTHREE.drawCircle();

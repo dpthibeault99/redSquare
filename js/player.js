@@ -20,19 +20,22 @@ function gameObject(x,y,w,h, color)
     // set up player dimensions
 
     // set up width
-    if(w==undefined){
-        this.width = 100;
-    } else {
-        this.w = w;
+   if(w == undefined){
+    this.width = 100;
+    } else 
+    {
+    this.width = w;
     }
     // set up hieght
-    if(h==undefined){
-        this.height = 100;
-    } else {
-        this.h = h;
-
+    if(h == undefined){
+    this.height = 100; // had to change this.w to this.width
+    } 
+    else 
+    {
+    this.height = h;// had to change this.h to this.height
+    }
         // set up color
-    } if (color==undefined){
+    if (color==undefined){
         this.color = "rgb(80, 136, 255)" 
     } else {
         this.color =color;
@@ -59,7 +62,7 @@ function gameObject(x,y,w,h, color)
             context.fillStyle = this.color;
             context.beginPath();
             context.translate(this.x,this.y);
-            conrext.arc(0, 0, this.width/2, 0, 360 * Math.PI/180, true);
+            context.arc(0, 0, this.width/2, 0, 360 * Math.PI/180, true);
             context.closePath();
             context.fill();
 
