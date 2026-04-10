@@ -27,7 +27,7 @@ function animate()
     {
          // uncomment one or the other to change movment
          // player.x = -player.width/2 //teleports player totally off the screen to the left // Turn this off before turning on bottom one
-       player.vx *= -1 // reverse velocity to simulate bounce off right border //READ THIS LINE DANNY!!
+       player.vx *= -1 // reverse velocity to simulate bounce off right border 
     }
 
     player.drawCircle();
@@ -35,5 +35,5 @@ function animate()
     npcONE.drawCircle();
     npcTWO.drawCircle();
     npcTHREE.drawCircle();
-     // takes a pac-man bite out of the square
+     // takes a pac-man bite out of the square -- it shouldnt if you type it right
 }
