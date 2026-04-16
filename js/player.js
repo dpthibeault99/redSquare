@@ -33,7 +33,7 @@ function gameObject(x,y,w,h, color)
     this.width = w;
     }
 
-    // set up hieght
+    // set up height
     if(h == undefined)
     {
     this.height = 100; // had to change this.w to this.width
@@ -75,6 +75,11 @@ function gameObject(x,y,w,h, color)
     // set up player velocity
     this.vx = 0;
     this.vy = 0;
+
+    /// set up physics
+    this.force = 1;
+    this.ax = 1; // horizatial
+    this.ay = 1;// vertical
 
     this.drawRect = function()
     {
