@@ -20,7 +20,7 @@ platform0.width = 400;
 platform0.y = player.y + player.height/2 + platform0.height/2;
 platform0.color = '#008127'
 
-// NEW reguler platform
+// NEW pass throw platform
 
 platform1 = new gameObject();
 platform1.width = 200;
@@ -28,7 +28,7 @@ platform1.y = player.y + player.height/2 + platform1.height/2;
 platform1.x = 130;
 platform1.color = '#0084ff';
 
-// NEW pass throw platform
+// NEW reguler platform
 
 platform2 = new gameObject();
 platform2.width = 200;
@@ -70,17 +70,46 @@ function animate()
     doUpdatePosition();
     doCheckBottomBound();
 
+    // platform0 collistion Green
     while (platform0.hitTestPoint(player.bottom())) //NEW
     {
         player.y --;
-        player.jumpSpeed;
+        player.vy = 0;
         player.canJump = true;
     }
 
     while(platform0.hitTestPoint(player.top())) // NEW
     {
         player.y++;
-        player.jumpSpeed;
+        player.vy = 0;
+    }
+
+     // platform1 collistion Blue
+    while (platform1.hitTestPoint(player.bottom() && player.vy >=0 )) //NEW
+    {
+        player.y --;
+        player.vy = 0;
+        player.canJump = true;
+    }
+
+    while(platform1.hitTestPoint(player.top() )) // NEW
+    {
+        // player.y++;
+        // player.vy = 0;
+    }
+
+    // platform2 collistion yellow
+    while (platform2.hitTestPoint(player.bottom())) //NEW
+    {
+        player.y --;
+        player.vy = 0;
+        player.canJump = true;
+    }
+
+    while(platform2.hitTestPoint(player.top())) // NEW
+    {
+        player.y++;
+        player.vy = 0;
     }
 
     player.move();
