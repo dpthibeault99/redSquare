@@ -85,9 +85,10 @@ function animate()
     }
 
      // platform1 collistion Blue
-    while (platform1.hitTestPoint(player.bottom() && player.vy >=0 )) //NEW
+  
+    while (platform1.hitTestPoint(player.bottom()) && player.vy >= 0)
     {
-        player.y --;
+        player.y = platform1.y - platform1.height / 2 - player.height / 2;
         player.vy = 0;
         player.canJump = true;
     }
