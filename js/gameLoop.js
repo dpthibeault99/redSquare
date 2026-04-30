@@ -15,6 +15,8 @@ player = new gameObject(200,canvas.height/2,this.w,this.h,'#ff00f2')
 player.vx = 0; //horizontal movement
 player.vy = 0; // vertical movement
 
+// NEW reguler platform
+
 platform0 = new gameObject();
 platform0.width = 400;
 platform0.y = player.y + player.height/2 + platform0.height/2;
@@ -81,16 +83,16 @@ function animate()
     while(platform0.hitTestPoint(player.top())) // NEW
     {
         player.y++;
-        player.vy = 0;
+        player.vy = 0;//NEW
     }
 
     // platform1 collision Blue
 
-    while (platform1.hitTestPoint(player.bottom()) && player.vy >= 0)
+    while (platform1.hitTestPoint(player.bottom()) && player.vy >= 0) //NEW
     {
         player.y--;
         player.vy = 0;
-        player.canJump = true;
+        player.canJump = true;//NEW
     }
 
 
@@ -100,13 +102,13 @@ function animate()
     {
         player.y --;
         player.vy = 0;
-        player.canJump = true;
+        player.canJump = true;//NEW
     }
 
     while(platform2.hitTestPoint(player.top())) // NEW
     {
         player.y++;
-        player.vy = 0;
+        player.vy = 0;//NEW
     }
 
     player.move();

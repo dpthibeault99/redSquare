@@ -51,7 +51,7 @@ function gameObject(x,y,w,h, color)
         this.color =color;
     }
 
-    this.jumpSpeed = -20;
+    this.jumpSpeed = -20; // NEW
 
     // bounding Points! NEW
 
