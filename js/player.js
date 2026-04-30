@@ -51,7 +51,9 @@ function gameObject(x,y,w,h, color)
         this.color =color;
     }
 
-    // bounding Points!
+    this.jumpSpeed = -20;
+
+    // bounding Points! NEW
 
     this.left = function()
     {
@@ -70,6 +72,10 @@ function gameObject(x,y,w,h, color)
         return{x:this.x, y:this.y + this.height/2};
 
     }
+
+    this.prevX = x;
+    this.canJump = true; // NEW
+
 
     // //bounding box
 
@@ -90,7 +96,6 @@ function gameObject(x,y,w,h, color)
     //     return this.y + this.height/2;
     // }
 
-    this.prevX = x;
 
     // set up player velocity
     this.vx = 0;
@@ -133,8 +138,6 @@ function gameObject(x,y,w,h, color)
             context.fillRect(this.right().x-size/2, this.right().y-size/2, size, size); // right
             context.fillRect(this.top().x-size/2, this.top().y-size/2, size, size); // top
             context.fillRect(this.bottom().x-size/2, this.bottom().y-size/2, size, size); // top
-
-
         context.restore();
     }
 
@@ -159,5 +162,18 @@ function gameObject(x,y,w,h, color)
             return true
         }
         return false
+    }
+
+    this.hitTestPoint = function(obj) // NEW
+    {
+        if(obj.x >= this.left().x &&
+           obj.x <= this.right().x &&
+           obj.y >= this.top().y &&
+           obj.y <= this.bottom().y 
+        )
+           {
+            return true;
+           }
+           return false;
     }
 }

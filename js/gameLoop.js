@@ -15,6 +15,27 @@ player = new gameObject(200,canvas.height/2,this.w,this.h,'#ff00f2')
 player.vx = 0; //horizontal movement
 player.vy = 0; // vertical movement
 
+platform0 = new gameObject();
+platform0.width = 400;
+platform0.y = player.y + player.height/2 + platform0.height/2;
+platform0.color = '#008127'
+
+// NEW reguler platform
+
+platform1 = new gameObject();
+platform1.width = 200;
+platform1.y = player.y + player.height/2 + platform1.height/2;
+platform1.x = 130;
+platform1.color = '#0084ff';
+
+// NEW pass throw platform
+
+platform2 = new gameObject();
+platform2.width = 200;
+platform2.y = player.y + player.height/2 + platform2.height/2;
+platform2.x = 870;
+platform2.color = '#d0ff00';
+
 // npcONE = new gameObject(310,canvas.height/2,100,100,'#ffbb00');
 // npcTWO = new gameObject(500,canvas.height/2,100,100,'#0d007e');
 // npcTHREE = new gameObject(900,canvas.height/2,100,100,'#ff0000');
@@ -25,6 +46,12 @@ timer = setInterval(animate, interval);
 function animate()
 {
     context.clearRect(0, 0, canvas.width, canvas.height);
+
+    if (w && player.canJump)
+    {
+        player.canJump = false;
+        player.vy += player.jumpSpeed;
+    }
 
     // // player movement
     //  if(d)
@@ -43,6 +70,18 @@ function animate()
     doUpdatePosition();
     doCheckBottomBound();
 
+    while (platform0.hitTestPoint(player.bottom())) //NEW
+    {
+        player.y --;
+        player.jumpSpeed;
+        player.canJump = true;
+    }
+
+    while(platform0.hitTestPoint(player.top())) // NEW
+    {
+        player.y++;
+        player.jumpSpeed;
+    }
 
     player.move();
     //npcONE.move();
@@ -84,6 +123,9 @@ function animate()
     // player.drawCircle();
     player.drawRect();
     player.drawDebug();
+    platform0.drawRect();
+    platform1.drawRect();
+    platform2.drawRect();
     // npcONE.drawCircle();
     // npcTWO.drawCircle();
     // npcTHREE.drawCircle();
@@ -124,14 +166,16 @@ function doCheckBottomBound()
     {
         player.y = canvas.height - player.height/2;
         player.vy = 0;
-        doJump();
+        player.canJump = true; // NEW
+        // doJump();
     }
 }
 
 function doJump(){
     if(w)
     {
-        player.vy = -20; // does -20 go up??
+        player.vy += player.jumpSpeed;
+
     }
     
 }
