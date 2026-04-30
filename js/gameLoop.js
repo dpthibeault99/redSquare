@@ -83,6 +83,7 @@ function animate()
 
     // player.drawCircle();
     player.drawRect();
+    player.drawDebug();
     // npcONE.drawCircle();
     // npcTWO.drawCircle();
     // npcTHREE.drawCircle();

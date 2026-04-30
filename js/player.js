@@ -51,24 +51,44 @@ function gameObject(x,y,w,h, color)
         this.color =color;
     }
 
-    //bounding box
+    // bounding Points!
 
     this.left = function()
     {
-        return this.x - this.width/2;
+        return{x: this.x - this.width/2, y:this.y};
     }
     this.right = function()
     {
-        return this.x + this.width/2;
+        return{x:this.x + this.width/2, y:this.y};
     }
     this.top = function()
     {
-        return this.y - this.height/2;
+        return{x:this.x, y:this.y - this.height/2};
     }
     this.bottom = function()
     {
-        return this.y + this.height/2;
+        return{x:this.x, y:this.y + this.height/2};
+
     }
+
+    // //bounding box
+
+    // this.left = function()
+    // {
+    //     return this.x - this.width/2;
+    // }
+    // this.right = function()
+    // {
+    //     return this.x + this.width/2;
+    // }
+    // this.top = function()
+    // {
+    //     return this.y - this.height/2;
+    // }
+    // this.bottom = function()
+    // {
+    //     return this.y + this.height/2;
+    // }
 
     this.prevX = x;
 
@@ -99,6 +119,21 @@ function gameObject(x,y,w,h, color)
             context.arc(0, 0, this.width/2, 0, 360 * Math.PI/180, true);
             context.closePath();
             context.fill();
+        context.restore();
+    }
+
+    this.drawDebug = function()
+    {
+        var size = 10;
+       
+        context.save();
+            context.fillStyle = "#000000" ;
+            context.fillRect(this.x-size/2, this.y-size/2, size, size); // middle
+            context.fillRect(this.left().x-size/2, this.left().y-size/2, size, size); // left
+            context.fillRect(this.right().x-size/2, this.right().y-size/2, size, size); // right
+            context.fillRect(this.top().x-size/2, this.top().y-size/2, size, size); // top
+            context.fillRect(this.bottom().x-size/2, this.bottom().y-size/2, size, size); // top
+
 
         context.restore();
     }
