@@ -95,8 +95,6 @@ function animate()
         player.canJump = true;//NEW
     }
 
-
-
     // platform2 collistion yellow
     while (platform2.hitTestPoint(player.bottom())) //NEW
     {
@@ -149,15 +147,14 @@ function animate()
     // }
 
     // player.drawCircle();
-    player.drawRect();
-    player.drawDebug();
-    platform0.drawRect();
-    platform1.drawRect();
-    platform2.drawRect();
+    player.drawRect();//NEW
+    player.drawDebug();//NEW
+    platform0.drawRect();//NEW
+    platform1.drawRect();//NEW
+    platform2.drawRect();//NEW
     // npcONE.drawCircle();
     // npcTWO.drawCircle();
     // npcTHREE.drawCircle();
-    
 }
 
 function doHandleAcceleration()
@@ -203,7 +200,6 @@ function doJump(){
     if(w)
     {
         player.vy += player.jumpSpeed;
-
     }
     
 }
